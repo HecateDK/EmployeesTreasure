@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$.ajax({
 		type:'post',
-		url:"http://10.90.90.36:8888/sjygb_user/session",
+		url:"XXX",
 		data:'data',
 		dataType:'json',
 		success:function(result){
