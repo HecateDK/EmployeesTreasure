@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+	<title>门店管理员</title>
+	<script type="text/javascript" src="js/index.js"></script>
+	<link rel="stylesheet" href="css/administratorStore.css" type="text/css" />
+</head>
+<body>
+<header class="header g-clear">
+	<div class="admin-img">
+		<img src="images/admin-img.png" alt="">
+	</div>
+	<div class="admin-expo">
+		<input id="orgID" type="hidden" value="{{ Items.orgId }}">
+		<div class="stores"><em class="admin-expo-em">所属门店:</em>{{ Items.org }}</div>
+		<div class="names"><em class="admin-expo-em">用户名:</em>{{ Items.memberName }}</div>
+		<div class="scores g-clear">
+			<div class="available"><em class="admin-expo-em">可用积分：</em>{{ Items.memberPoints }}</div>
+			<div class="freeze"><em class="admin-expo-em">冻结积分：</em>{{ Items.freezeMemberPoints }}</div>
+		</div>
+	</div>
+</header>
+<div class="container">
+	<div class="order g-clear">
+		<div class="order-img">
+			<img src="images/order.png" alt="">
+			门店保单
+		</div>
+		<div class="checkall">
+			查看全部订单&gt;
+		</div>
+	</div>
+	<div class="order g-clear">
+		<a class="report-btn">
+			<div class="order-img">
+				<img src="images/union.png">
+				万商联盟产出
+			</div>
+			<div class="checkall">
+				查看全部商户&gt;
+			</div>
+		</a>
+	</div>
+	<div class="adminMenu margin-top-b">
+		<div class="admin-menu g-clear">
+			<div class="order-img">采购管理</div>
+			<div class="checkall">&gt;</div>
+		</div>
+	</div>
+	<div class="adminMenu">
+		<div class="admin-menu g-clear">
+			<div class="order-img">员工管理</div>
+			<div class="checkall">&gt;</div>
+		</div>
+	</div>
+	<div class="adminMenu">
+		<div class="admin-menu g-clear">
+			<div class="order-img">分销公司管理</div>
+			<div class="checkall">&gt;</div>
+		</div>
+	</div>
+	<div class="adminMenu">
+		<div class="admin-menu g-clear">
+			<div class="order-img">保险业绩统计</div>
+			<div class="checkall">&gt;</div>
+		</div>
+	</div>
+	<div class="adminMenu">
+		<div class="admin-menu g-clear">
+			<div class="order-img">顾客信息</div>
+			<div class="checkall">&gt;</div>
+		</div>
+	</div>
+	<div class="adminMenu">
+		<div class="admin-menu g-clear">
+			<div class="order-img">联系我们</div>
+			<div class="checkall">&gt;</div>
+		</div>
+	</div>
+	<div class="adminMenu adminmenu-bottom">
+		<a href="scorebuysell.html">
+			<div class="admin-menu g-clear">
+				<div class="order-img">积分管理</div>
+				<div class="checkall">&gt;</div>
+			</div>
+		</a>
+	</div>
+</div>
+<footer class="footer g-clear">
+	<div class="homepage">首页</div>
+	<div class="carinsurance">车险</div>
+	<div class="personal curent">我的</div> 
+</footer>
+<script src="js/jquery.1.7.2.min.js"></script>
+<script src="http://static.runoob.com/assets/vue/1.0.11/vue.min.js"></script>
+<script type="text/javascript">
+/*$(document).ready(function () {
+	
+		$.ajax({
+			type:'get',
+			url:'http://10.90.90.36:8800/sjygb_user/session',
+			dataType:'jsonp',
+			jsonpCallback:'callback',
+			data:'data',
+			success:function(data){
+				console.log(data[0]);
+			},
+			error:function(errorThrow){
+				console.log(errorThrow);
+			}
+	});
+
+});*/
+var vm = new Vue({
+	el:'.admin-expo',
+	data:{
+		Items:[]
+	},
+	ready:function(){
+		var self = this;
+		$.ajax({
+			type:'get',
+			url:'http://10.90.90.36:8888/sjygb_user/session',
+			dataType:'jsonp',
+			jsonpCallback:'callback',
+			data:'data',
+			success:function(data){
+				console.log(data[0]);
+				self.Items = data[0];
+				console.log(self.Items);
+			},
+			error:function(errorThrow){
+				console.log(errorThrow);
+			}
+		});
+	}
+});
+$(document).ready(function(){
+	$(".report-btn").click(function(e){
+		var orgid = $("#orgID").val();
+		var values = $.extend({},{storeId:null,startTime:null,finishTime:null,memberName:null,orgId:orgid});
+		console.log(values);
+		$.ajax({
+			type:'post',
+			url:'http://10.90.90.36:8888/sjygb_user/baobiao',
+			dataType:'jsonp',
+			jsonpCallback:'callback',
+			data:values,
+			success:function(data){
+				window.location.href = 'report.html'+'?'+'orgid'+'='+orgid;
+				
+			}
+		})
+	})
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>万商联盟商报表</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<script src="js/jquery.1.7.2.min.js"></script>
+    <script src="js/mobiscroll_002.js" type="text/javascript"></script>
+	<script src="js/mobiscroll_004.js" type="text/javascript"></script>
+	<link href="css/mobiscroll_002.css" rel="stylesheet" type="text/css">
+	<link href="css/mobiscroll.css" rel="stylesheet" type="text/css">
+	<script src="js/mobiscroll.js" type="text/javascript"></script>
+	<script src="js/mobiscroll_003.js" type="text/javascript"></script>
+	<script src="js/mobiscroll_005.js" type="text/javascript"></script>
+	<link href="css/mobiscroll_003.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="js/index.js"></script>
+	<link rel="stylesheet" href="css/administratorStore.css" type="text/css" />
+	<style type="text/css">
+		/*页面样式*/
+		html, body, .app {
+			font-size: 0.2rem;
+		    margin: 0;
+		    padding: 0;
+		    height: 100%;
+		    overflow: auto;
+		    background-color: #ddd;
+		    -webkit-overflow-scrolling: touch; /* ios5+ 以上滚动流畅*/
+		}
+		.app{
+			height:600px;
+		}
+		.item {
+
+		    padding: 10px;
+
+		    background-color: #fff;
+
+		    border-bottom: 1px solid #ddd;
+
+		    position: relative;
+
+		    width: 100%;
+
+		    display: block;
+		    text-decoration: none;
+		    box-sizing: border-box;
+		}
+
+		.item h1 {
+
+		    font-size: 21px;
+
+		    margin: 0px;
+		}
+
+		.item .desc {
+
+		    color: #0D7168;
+
+		    word-wrap: break-word;
+
+		    width: 100%;
+
+		    word-break: break-all;
+		}
+
+		.item .dowm {
+
+		}
+
+		.item .score {
+
+		    position: absolute;
+
+		    top: 12px;
+
+		    right: 13px;
+
+		    color: #AD5A11;
+		}
+
+
+		/*下拉刷新和加载更多的基础样式。可以自己定义*/
+		.dropload-up {
+		    position: relative;
+		    height: 0;
+		    overflow: hidden;
+		    -webkit-transform: translateZ(0);
+		    transform: translateZ(0);
+		}
+
+		.dropload-refresh, .dropload-update, .dropload-load, .dropload-noData {
+		    height: 50px;
+		    line-height: 50px;
+		    text-align: center;
+		}
+
+		.dropload-load .loading {
+		    display: inline-block;
+		    height: 15px;
+		    width: 15px;
+		    border-radius: 100%;
+		    margin: 6px;
+		    border: 2px solid #666;
+		    border-bottom-color: transparent;
+		    vertical-align: middle;
+		    -webkit-animation: rotate 0.75s linear infinite;
+		    animation: rotate 0.75s linear infinite;
+		}
+
+		@-webkit-keyframes rotate {
+		    from {
+		        -webkit-transform: rotate(0deg);
+		    }
+		    to {
+		        -webkit-transform: rotate(360deg);
+		    }
+		}
+	</style>
+</head>
+<body>
+	<header class="header-score g-clear">
+		<a href="#" class="backup">	&lt;</a>
+		<h4 class="headtitle headTitle">万商联盟商报表</h4>
+	</header>
+	<div class="report">
+		<div class="time g-clear">
+			<input value="" class="startDate" placeholder="开始日期" readonly="readonly" name="appDate" id="appDate" type="text">
+			<input value="" class="endDate" placeholder="结束日期" readonly="readonly" name="endDate" id="endDate" type="text">
+		</div>
+		<div class="time g-clear">
+			<div idtag="name" class="select">
+				<span class="defaultItem"><table><tr><td id="td" data-id="null">所有员工</td></tr></table></span>
+				<ul class="select-items">
+					<li v-for="Item in Items" data-id='{{ Item.storeId }}'>{{ Item.memberName }}</li>
+				</ul>
+			</div>
+			<input class="query" type="submit" value="立即查询">
+		</div>
+		<div id="reportList" class="reportList">
+			<ul>
+				<li class="report-list" v-for="Item in Items">
+					<div class="items-header">
+						<span class="items-time"><em data-id="{{ Item.startTime }}">{{ Item.startTime }}</em>至<em data-id="{{ Item.finishTime }}">{{ Item.finishTime }}</em></span>,
+						<span class="items-times">{{ Item.num }}笔</span>
+						<span class="items-person">{{ Item.memberName }}</span>
+					</div>
+					<div class="items-content">
+						<span class="items-title">{{ Item.storeName }}</span>
+						<span class="items-capital">{{ Item.amount }}元</span>,
+						<span class="items-items-score">{{ Item.points }}积分</span>,
+						<span class="items-benifit">收益{{ Item.income }}元</span>
+						<input id='list-page' type="hidden" value="{{ Item.page }}">
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>	
+	<footer class="footer g-clear">
+		<div class="homepage">首页</div>
+		<div class="carinsurance">车险</div>
+		<div class="personal curent">我的</div> 
+	</footer>
+	<script type="text/javascript">
+        $(function () {
+			var currYear = (new Date()).getFullYear();	
+			var opt={};
+			opt.date = {preset : 'date'};
+			opt.datetime = {preset : 'datetime'};
+			opt.time = {preset : 'time'};
+			opt.default = {
+				theme: 'android-ics light', //皮肤样式
+		        display: 'modal', //显示方式 
+		        mode: 'scroller', //日期选择模式
+				dateFormat: 'yyyy-mm-dd',
+				lang: 'zh',
+				showNow: true,
+				nowText: "今天",
+		        startYear: currYear - 10, //开始年份
+		        endYear: currYear + 10 //结束年份
+			};
+
+		  	$("#appDate").mobiscroll($.extend(opt['date'], opt['default']));
+		  	$("#endDate").mobiscroll($.extend(opt['date'], opt['default']));
+		  	var optDateTime = $.extend(opt['datetime'], opt['default']);
+		  	var optTime = $.extend(opt['time'], opt['default']);
+		    $("#appDateTime").mobiscroll(optDateTime).datetime(optDateTime);
+		    $("#appTime").mobiscroll(optTime).time(optTime);
+        });
+    </script>
+    <script type="text/javascript" src="js/select.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(e){
+			var url=location.href;
+			var tmpl=url.split("?")[1];
+			console.log(tmpl);  
+			var vm = new Vue({
+				el:'.report',
+				data: function () {
+					return {
+					// Items: []
+				};
+			}, 
+			created:function(){
+				var self = this;
+				$.ajax({
+					type:'get',
+					url:'http://10.90.90.36:8888/sjygb_user/baobiao?'+tmpl,
+					dataType:'jsonp',
+					jsonpCallback:'callback',
+					success:function(data){
+						self.$set("Items", data);
+						console.log(data);
+					},
+					error:function(errorThrow){
+						console.log(errorThrow);
+					}
+				});
+			}
+		}); 
+		});
+		
+
+	</script>
+	<script>
+	$(function(){
+		$(".query").click(function(e){
+			var url=location.href;
+			var tmpl=url.split("=")[1];
+			var startDate = $("#appDate").val();
+			var endDate = $("#endDate").val();
+			var startdate = (new Date(startDate)).getTime()/1000;
+			var enddate = (new Date(endDate)).getTime()/1000;
+			var employee = $("#td").attr("data-id");
+			var values = $.extend({},{"startTime":startdate,"finishTime":enddate,"storeId":employee,"orgId":tmpl});
+			console.log(values);
+			$.ajax({
+				type:'post',
+				url:'http://10.90.90.36:8888/sjygb_user/baobiao',
+				dataType:'jsonp',
+				jsonpCallback:'callback',
+				data:values,
+				success:function(r){
+					console.log(r);
+					$(".report-list").remove();
+					var html = ' ';
+						html += '<li class="report-list" v-for="Item in Items">';
+						html += '<div class="items-header">';
+						html += '<span class="items-time">';
+						html += '<em data-id="{{ Item.startTime }}">{{ Item.startTime }}';
+						html += '</em>';
+						html += '至';
+						html += '<em data-id="{{ Item.finishTime }}">{{ Item.finishTime }}';
+						html += '</em>';
+						html += '</span>';
+						html += ',';
+						html += '<span class="items-times">{{ Item.num }}笔</span>';
+						html += '<span class="items-person">{{ Item.memberName }}</span>';
+						html += '</div>';
+						html += '<div class="items-content">';
+						html += '<span class="items-title">{{ Item.storeName }}</span>';
+						html += '<span class="items-capital">{{ Item.amount }}元</span>,';
+						html += '<span class="items-items-score">{{ Item.points }}积分</span>,';
+						html += '<span class="items-benifit">收益{{ Item.income }}元</span>';
+						html += '</div>';
+						html += '</li>';
+						console.log(html);
+						$("#reportList ul").append(html);
+						var url=location.href;
+						var tmpl=url.split("?")[1];
+						console.log(tmpl);  
+						var vm = new Vue({
+							el:'.report',
+							data: function () {
+								return {
+								};
+							}, 
+						created:function(){
+							var self = this;
+							self.$set("Items", r);
+						}
+					}); 
+				}
+			});
+		});
+	});
+	// 返回上一步
+	$('.backup').click(function(){
+		window.history.back();
+		/*
+		var url = document.referrer;
+		if(url=='' || url.indexOf("goods.html")!='-1'){
+			url = 'index.html';
+		}
+		
+		window.location.href = 'index.html';
+
+		*/
+	});
+	</script>
+</body>
+</html>

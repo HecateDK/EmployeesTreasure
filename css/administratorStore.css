@@ -1,0 +1,750 @@
+* ===============
+ * 重新定义Html元素
+ * =============== */
+html,
+body,
+div,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+p,
+blockquote,
+fieldset,
+input{
+	margin:0;
+	padding: 0;
+}
+html,body,div,h1,h2,h3,h4,h5,h6,ul,li,ol,pre,form,p,input{
+	margin: 0;
+	padding: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+address,
+caption,
+cite,
+code,
+em,
+strong,
+table,
+th,
+td {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+}
+strong {
+  font-weight: bold;
+}
+ul,
+ol {
+  list-style: none outside none;
+}
+fieldset,
+img {
+  vertical-align: middle;
+  border: medium none;
+}
+caption,
+th {
+  text-align: left;
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+body {
+  font: Arial, Verdana, '宋体', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif;
+  color: #666;
+  padding:0;
+  margin: 0;
+  overflow-x: hidden; 
+  /*background: #fff none repeat scroll 0 0;*/
+/*  background: #f5f5f5;
+*/}
+input,
+select,
+textarea {
+  font: Tahoma, Helvetica, Arial, '\5b8b\4f53', sans-serif;
+}
+i,
+cite,
+em {
+  font-style: normal;
+}
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.g-clear:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+}
+/* 头部 START */
+.header{
+	background-color: #6cf;
+	padding: 0.2rem 0.1rem;
+	border-bottom: 1px solid #eee;
+}
+.admin-img{
+	float: left;
+	padding: 0.2rem 0.1rem;
+}
+.admin-img img{
+	width: 1.2rem;
+}
+.admin-expo{
+	display: inline-block;
+	margin-left: 0.1rem;
+	margin-top: 0.1rem;
+	width: 75%;
+}
+.admin-expo div{
+	color: #fff;
+	font-size: 0.25rem;
+	font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 0.1rem;
+    white-space:nowrap; 
+    text-overflow:ellipsis; 
+    -o-text-overflow:ellipsis; 
+    overflow:hidden;
+}
+.names{
+	margin-top: 0.2rem !important;
+}
+.available{
+	float: left;
+}
+.freeze{
+	display: inline-block;
+}
+.available,.freeze{
+	width: 50%;
+}
+/* 头部 END */
+.container{
+	margin-top: 0.2rem;
+    border-top: 1px solid #ddd;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid #ddd;
+}
+/* 门店保单 万商联盟产出 START */
+.order{
+	font-family: 'Arial Normal', 'Arial'; */
+    font-weight: 400;
+    font-style: normal;
+    padding: 0.1rem;
+    border-bottom: 1px solid #ddd;
+	line-height: 0.55rem;
+}
+.order-img{
+	float: left;
+	font-size: 0.25rem;
+	color: #6B6B6B;
+	margin-right: 0.1rem;
+}
+.order-img img{
+	width: 0.4rem;
+}
+.checkall{
+	color: #C9C9C9;
+	font-size: 0.25rem;
+	display: inline-block;
+	float: right;
+}
+/* 门店保单 万商联盟产出 END */
+/* 菜单选项 START */
+.adminMenu{
+	margin-top: 0.1rem;
+	border-top:1px solid #ddd;
+}
+.margin-top-b{
+	margin-top: 0.2rem;
+}
+.admin-menu{
+	font-family: 'Arial Normal', 'Arial'; */
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 0.1rem;
+    padding: 0.15rem 0.1rem 0.05rem 0.1rem;
+    border-top: 1px solid #ddd;
+	line-height: 0.5rem;
+}
+.adminmenu-bottom{
+	padding-bottom: 0.15rem;
+}
+/* 菜单选项 END */
+/* 底部 START */
+.footer{
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	height: 0.8rem;
+  background-color: #fff;
+	border-top: 1px solid #ddd;
+}
+.homepage,.carinsurance,.personal{
+	float: left;
+	font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.3rem;
+    line-height: 0.4rem;
+    text-align: center;
+    color: #999;
+	width: 33.33%;
+	display: inline-block;
+	margin-top: 0.2rem;
+}
+.curent{
+	color: #333;
+}
+/* 底部 END */
+
+
+
+
+
+/* 积分购买 */
+.content{
+  background-color: #f2f2f2;
+}
+/* 顶部 START */
+.header-score {
+    background-color: #6cf;
+    padding: 0rem 0.05rem 0.15rem 0.05rem;
+    line-height: 0.4rem;
+    height: 0.7rem;
+}
+.backup {
+    font-size: 0.4rem;
+    text-decoration: blink;
+    color: #fff;
+}
+.headtitle,.purchaserecords{
+	  font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    color: #FFFFFF;
+	  display: inline-block;
+}
+.headtitle {
+    font-size: 0.3rem;
+    width: 68%;
+    text-align: center;
+}
+.headTitle{
+  width: 80%;
+  line-height: 0.8rem;
+}
+.purchaserecords a{
+	font-size: 0.2rem;
+  color: #fff;
+  text-decoration: blink;
+}
+/* 顶部 END */
+/* 公司简介 START */
+.company{
+	background-color: #6cf;
+	font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    color: #FFFFFF;
+    margin-top: 0.1rem;
+    padding: 0.4rem 0 0.2rem 0;
+}
+.company-img{
+	float: left;
+	padding: 0 0.1rem;
+}
+.company-img img{
+	width: 1rem;
+}
+.company-expo {
+    width: 45%;
+    margin-left: 0.1rem;
+    padding: 0.3rem 0 0 0;
+    display: inline-block;
+}
+.company-title,.company-nav,.scorebalance{
+	width: 98%;
+	white-space:nowrap; 
+    text-overflow:ellipsis; 
+    -o-text-overflow:ellipsis; 
+    overflow:hidden;
+    line-height: 0.4rem;
+}
+.company-title{
+	font-size: 0.25rem;
+}
+.company-nav{
+	font-size: 0.15rem;
+}
+.company-score {
+	float: right;
+	width: 27%;
+    font-size: 0.2rem;
+    display: inline-block;
+}
+.scorebalance{
+	line-height: 0.5rem;
+}
+/* 公司简介 END */
+/* 积分购买or积分提现 START */
+.choice-btn {
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.3rem;
+    color: #333333;
+    text-align: center;
+    background-color: #ff9900;
+    margin-top: 0.2rem;
+}
+.purchaserescore, .withdrawalscore {
+    display: inline-block;
+    width: 50%;
+    background-color: #fff;
+    padding: 0.25rem 0;
+    margin-bottom: 0.05rem;
+}
+.purchaserescore{
+    float: left;
+}
+.current-btn{
+    background-color: #ff9900;
+}
+.choice-btn-score{
+  background-color: #00ccff;
+}
+.current-btn-score{
+  color: #fff;
+  background-color: #00ccff;
+}
+/* 积分购买or积分提现 END */
+/* purchaserescore START */
+#purchaserescore,.numberinput,#withdrawalscore{
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.3rem;
+    line-height: 0.4rem;
+    color: #666666;
+}
+#purchaserescore,#withdrawalscore{
+  margin-bottom: 0.8rem;
+}
+#withdrawalscore{
+  display: none;
+}
+.ui-input-text, .ui-input-search{
+  width: 72%;
+  border:0;
+  margin: 0;
+  display: inline-block;
+}
+.number{
+  width: 92%;
+  margin: 0.4rem auto 0.2rem;
+  border:1px solid #ddd;
+  padding: 0.15rem 0.1rem;
+  background-color: #fff;
+  border-radius: 0.1rem;
+}
+.number div{
+  width: 73%;
+  border:0;
+  display: inline-block;
+  margin: 0;
+}
+.number-score div{
+  width: 60%;
+}
+.ui-input-text input, .ui-input-search input{
+  background: #fff;
+}
+.numbertext{
+  font-size: 0.25rem;
+}
+.numberinput {
+    padding: 5px;
+    border: 0px;
+    margin-left: 0.2rem;
+}
+.numberinput-purchasere{
+  width: 65%;
+}
+.numberinput-withdrawal{
+  width: 49%;
+}
+.scoreexplain{
+  font-size: 0.2rem;
+  color: #999;
+  padding: 0.05rem 0.3rem;
+}
+.optionalitem {
+    width: 22%;
+    float: left;
+    display: inline-block;
+    text-align: center;
+    padding: 2% 3%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-left: 3.5%;
+    border-radius:0.1rem;
+}
+.optionalitem span{
+    display: block;
+}
+.optionalselect{
+  left: -0.8rem !important;
+  width: 0.8rem !important;
+  height: 0.8rem !important;
+  opacity:0;
+}
+.optionalnum{
+    font-size: 0.25rem;
+}
+.optionalscore{
+    font-size: 0.15rem;
+    color: #BCBCBC;
+}
+.choice{
+     border:1px solid #66CCFF;
+}
+.choice span{
+    color: #66CCFF !important;
+}
+.amount{
+    font-weight: 700;
+    font-style: normal;
+    font-size: 0.25rem;
+    color: #333333;
+    width: 88%;
+    margin: 0.2rem auto 0.2rem;
+    border:1px solid #ddd;
+    padding: 0.2rem 0.1rem;
+    background-color: #fff;
+}
+.ammountscore {
+    display: inline-block;
+    width: 80%;
+    text-align: right;
+    color: red;
+}
+.paymethodtext{
+    font-size: 0.25rem;
+    color: #999;
+    padding: 0.05rem 0.3rem;
+}
+.paymethod {
+    background-color: #fff;
+}
+.paymethodlist{
+  border-bottom:1px solid #ddd;
+  padding: 0.15rem 0.2rem;
+}
+.paymethodlist img{
+  width: 0.8rem;
+}
+.paymethodexp {
+    color: #333;
+    font-size: 0.25rem;
+    display: inline-block;
+    width: 30%;
+}
+.paymethodlist input{
+  width: 0.28rem;
+  height: 0.28rem;
+}
+.paymethodlist input{
+  position: absolute;
+  display: none;
+}
+.paymethodlist i{
+  display: inline-block;
+  width: 0.28rem;
+  height: 0.28rem;
+  background: url(../images/radio_simulation.png) no-repeat;
+  vertical-align: middle;
+}
+input:checked+i{
+  background: url(../images/radio_simulation_check.png) no-repeat;
+}
+.paybtn {
+    margin:0.2rem 0; 
+    width: 100%;
+    font-size: 0.25rem;
+    color: #fff;
+    text-align: center;
+    background-color: #66CCFF;
+    padding: 0.2rem 0;
+    border-radius: 0.05rem;
+}
+/* 拖动条 */
+ .ui-checkbox .ui-btn, .ui-radio .ui-btn{
+  border: 0;
+ }
+ .ui-radio{
+  float: right;
+    display: inline-block;
+    width: 10%;
+ }
+ .ui-btn{
+  padding: 0;
+ }
+ .ui-slider-bg.ui-btn-active.ui-btn-corner-all {
+    background-color: #1abc9c;
+}
+.ui-slider-handle.ui-btn.ui-btn-up-c.ui-shadow.ui-btn-corner-all {
+    background-color: #2fe2bf;
+    border: 1px solid #2fe2bf;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 0.2rem;
+}
+.ui-slider-track{
+  width: 90%;
+  margin: 0 0;
+  height: 0.2rem;
+  border: 1px solid #fff;
+  background-color: #ddd;
+}
+div.ui-slider {
+    width: 76%;
+    margin: 0 0 0 2%;
+    display: inline-block;
+}
+.ui-slider-track .ui-btn.ui-slider-handle{
+  margin: -0.1rem 0 0 -0.2rem;
+  top: 0.05rem;
+}
+.ui-slider input{
+  display: none;
+}
+.biggest {
+    float: right;
+    padding: 1px 4px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #999;
+    text-decoration: blink;
+    margin-right: 0.25rem;
+}
+.collection{
+    font-size: 0.25rem;
+    color: #999;
+    padding: 0.3rem 0.05rem 0 0.3rem;
+    border-top: 1px solid #ddd;
+    margin-top: 0.4rem;
+}
+.collection-list{
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-size: 0.2rem;
+    color: #333;
+    width: 95%;
+    margin: 0.2rem auto;
+    border: 1px solid #ddd;
+    padding: 0.15rem 0.1rem;
+    background-color: #fff;
+    border-radius: 0.1rem;
+}
+.collection-item {
+    display: inline-block;
+    width: 25%;
+    text-align: right;
+}
+.collection-input{
+  width: 72%;
+  border:0;
+
+}
+/* purchaserescore END */
+
+/* 万商联盟商报表 START */
+.report{
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    font-style: normal;
+    background-color: #f5f5f5;
+    margin-bottom:0.8rem;
+}
+.time{
+  width: 90%;
+  margin: 0.1rem auto;
+}
+.startDate,.endDate,.select,.query{
+  width: 44.5%;
+  border-radius: 0.1rem;
+  padding:0.15rem 0.1rem;
+  border: 1px solid #ccc;
+}
+.startDate,.select{
+  float: left;
+}
+.endDate,.query{
+  float: right;
+}
+.select{
+  display: inline-block;
+  font-size: 0.2rem !important;
+  padding: 0 0.1rem;
+}
+.query {
+    background: #fff;
+    width: 48.5%;
+}
+.defaultItem{background:url(../images/up.png) no-repeat right center white;background-size: 0.3rem;}
+.select span {cursor:pointer; display:block;  width:100%; height:0.55rem;line-height:0.55rem;overflow:hidden;}
+.select table {height:100%;}
+.select td {vertical-align:middle;}
+.select ul{width:181px;}
+.select ul li {cursor:pointer;}
+.select .select-items {overflow-y: scroll; overflow-x: hidden;max-height:148px; height:148px;width:180px; position:absolute;border:1px dashed #ccc; background:#fff;z-index:999;display:none;}
+.select .select-items li {display:block; line-height:25px; padding-left:10px;}
+.select .extraData{position:absolute;line-height:20px;padding-left:10px; padding-top:5px; padding-bottom:5px;border:1px dashed #ccc;background:white;display:none;}
+.reportList{
+    font-family: 'Arial Normal', 'Arial';
+    font-weight: 400;
+    color: #666666;
+    font-size: 0.2rem;
+    border-top: 1px solid #aaa;
+    margin-bottom: 0.8rem;
+}
+.report-list {
+    padding: 0.1rem 0.2rem;
+    border-bottom: 1px solid #ddd;
+}
+.items-header {
+    line-height: 0.45rem;
+    height: 0.45rem;
+}
+.items-person {
+    float: right;
+}
+.items-content{
+  line-height: 0.6rem;
+  height: 0.6rem;
+}
+.items-title {
+    font-size: 0.2rem;
+    font-weight: 600;
+    width: 40%;
+    display: block;
+    float: left;
+    white-space:nowrap; 
+    text-overflow:ellipsis; 
+    -o-text-overflow:ellipsis; 
+    overflow:hidden;
+}
+.items-benifit {
+    font-size: 0.2rem;
+    color: #f00;
+    font-weight: 600;
+}
+#no-more {
+    padding: 0.2rem;
+    text-align: center;
+}
+/* 万商联盟商报表 END */
+/* 积分购买记录 START */
+.record-expo{
+  padding: 0.2rem 0.1rem; 
+  border:1px solid #ddd;
+}
+.record-expo img{
+  float: left;
+  width: 15%;
+  border:1px solid #ddd;
+}
+.recordExpo{
+  float: right;
+  display: inline-block;
+  width: 83%;
+}
+.record-exopStore{
+  font-family: 'Arial Normal', 'Arial';
+  color: #333;
+  font-size: 0.25rem;
+  margin-bottom: 0.1rem;
+  white-space:nowrap; 
+  text-overflow:ellipsis;
+   -o-text-overflow:ellipsis; 
+   overflow:hidden;
+}
+.record-expoName{
+  font-family: 'Arial Normal', 'Arial';
+  color: #999;
+  font-size: 0.15rem;
+  white-space:nowrap; 
+  text-overflow:ellipsis;
+   -o-text-overflow:ellipsis; 
+   overflow:hidden;
+}
+.report-items {
+    border-bottom: 1px solid #999;
+    font-family: 'Arial Normal', 'Arial';
+    padding: 0.2rem 0.1rem;
+    margin: 0 0.1rem
+}
+.record-time{
+  font-size: 0.15rem;
+  color: #ccc;
+  margin-bottom: 0.1rem;
+}
+.record-explain{
+  font-size: 0.2rem;
+  color: #999;
+}
+.record-score,.record-method,.record-money{
+  color: #333;
+}
+/* 支付完成页面 START */
+.scorefinish {
+    background-color: #f2f2f2;
+}
+.scorefinish-expo{
+  font-family: 'Arial Normal', 'Arial';
+  font-size: 0.3rem;
+  color: #333;
+  line-height: 0.8rem;
+  margin-top:8%;
+  text-align: center;
+}
+.successPay-img {
+    width: 30%;
+}
+.successPayOk{
+  position: fixed;
+  bottom: 0.8rem;
+  margin: 0;
+}

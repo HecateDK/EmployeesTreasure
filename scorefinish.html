@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>支付结果</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta content="email=no" name="format-detection">
+	<link rel="stylesheet" href="css/administratorStore.css" type="text/css" />
+	<style>
+	html{
+		background-color: #f2f2f2;
+	}
+	</style>
+</head>
+<body>
+	<header class="header-score g-clear">
+		<a href="#" class="backup">	&lt;</a>
+		<h4 class="headtitle">支付结果</h4>
+		<h6 class="purchaserecords"><a href="record.html">购买记录</a></h6>
+	</header>
+	<div class="scorefinish">
+		<div class="company g-clear">
+			<div class="company-img">
+				<img src="images/company.png" alt="">
+			</div>
+			<div class="company-expo">
+				<div class="company-title">{{ Items.org }}</div>
+				<div class="company-nav"><em class="company-administrator">管理员：</em>{{ Items.memberName }}</div>
+			</div>
+			<div class="company-score">
+				<div class="scorebalance"><em class="score-em">积分余额:</em>{{ Items.add }}</div> 
+				<div class="scorebalance"><em class="score-em">可用积分:</em>{{ Items.memberPoints }}</div> 
+				<div class="scorebalance"><em class="score-em">冻结积分:</em>{{ Items.freezeMemberPoints }}</div> 
+			</div>
+		</div>
+		<div class="scorefinish-expo">
+			<div class="successPay">成功支付了</div>
+			<div class="successPay-money">￥{{ Items.amount }}元</div>
+			<img src="images/scorefinish.png" alt="" class="successPay-img">
+			<div class="successPay-get">获得尚景积分： {{ Items.handsPoints }}个</div>
+		</div>
+	</div>
+	<div class="paybtn successPayOk">完成</div>
+	<footer class="footer g-clear">
+		<div class="homepage">首页</div>
+		<div class="carinsurance">车险</div>
+		<div class="personal curent">我的</div> 
+	</footer>
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script src="http://static.runoob.com/assets/vue/1.0.11/vue.min.js"></script>
+	<script>
+		var vm = new Vue({
+			el:'.scorefinish',
+			data:{
+				Items:[]
+			},
+			ready:function(){
+				var self = this;
+				$.ajax({
+					type:'get',
+					url:'http://10.90.90.36:8888/sjygb_user/success',
+					dataType:'jsonp',
+					jsonpCallback:'callback',
+					data:'data',
+					success:function(data){
+						console.log(data[0]);
+						self.Items = data[0];
+						console.log(self.Items);
+					},
+					error:function(errorThrow){
+						console.log(errorThrow);
+					}
+				});
+			}
+		});
+		// 返回上一步
+		$('.backup').click(function(){
+			window.history.back();
+			/*
+			var url = document.referrer;
+			if(url=='' || url.indexOf("goods.html")!='-1'){
+				url = 'index.html';
+			}
+			
+			window.location.href = 'index.html';
+
+			*/
+		});
+	</script>
+</body>
+</html>
